@@ -60,7 +60,7 @@ npx sass --watch scss/main.scss dist/main.css
 @import 'pages/home';
 
 
-## variables.scss(CSS 변수 버전 예시)
+## _variables.scss(CSS 변수 버전 예시)
 ```bash
 :root {
   /* Colors */
@@ -121,3 +121,102 @@ npx sass --watch scss/main.scss dist/main.css
 
 3. 다크모드, 사용자 테마, JS 동적 제어에 유리 (동적)
 
+
+## 실무에서 많이 사용하는 _mixins.scss 예시
+```bash
+// 반응형 미디어쿼리
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: 576px) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: 768px) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: 992px) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: 1200px) { @content; }
+  }
+}
+
+// Flex 유틸리티
+@mixin flex($justify: flex-start, $align: stretch, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// 버튼 스타일
+@mixin button($bg, $color: #fff, $radius: 4px) {
+  background-color: $bg;
+  color: $color;
+  border: none;
+  border-radius: $radius;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// 트랜지션
+@mixin transition($property: all, $duration: 0.3s, $ease: ease-in-out) {
+  transition: $property $duration $ease;
+}
+
+// 텍스트 줄임말 (ellipsis)
+@mixin ellipsis($lines: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 컨테이너 max-width + margin auto
+@mixin container($max-width: 1200px) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+```
+
+### 사용예시
+```bash
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+.container {
+  @include container();
+}
+
+.header {
+  @include flex(space-between, center);
+}
+
+.button-primary {
+  @include button($primary);
+}
+
+.card {
+  @include transition(transform, 0.2s);
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.post-title {
+  @include ellipsis(2);
+}
+
+.main {
+  @include respond-to(md) {
+    padding: 32px;
+  }
+}
+
+```
