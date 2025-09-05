@@ -22,6 +22,10 @@ scss/
 
 
 ## main.scss 예시
+main.scss → main.css 로 빌드되게끔 Sass 컴파일러를 설정해 두면 좋아요.
+```bash
+npx sass --watch scss/main.scss dist/main.css
+```
 // abstracts
 
 @import 'abstracts/variables';
@@ -54,4 +58,6 @@ scss/
 // pages
 
 @import 'pages/home';
+
+
 
