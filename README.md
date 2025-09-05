@@ -1,3 +1,14 @@
+# Sass 설치하기
+1. 전역설치(Node.js필요)
+  ```bash
+  npm install -g sass
+  ```
+
+2. 프로젝트 로컬 설치
+  ```bash
+  npm install --save-dev sass
+  ```
+
 # SCSS 폴더 구조 예시
 ```bash
 scss/
@@ -23,9 +34,10 @@ scss/
 
 ## main.scss 예시
 main.scss → main.css 로 빌드되게끔 Sass 컴파일러를 설정해 두면 좋아요.
-```bash
-npx sass --watch scss/main.scss dist/main.css
-```
+- 실시간 감시(SCSS 파일이 수정될 때마다 자동으로 다시 컴파일됩니다.)
+  ```bash
+  sass --watch scss/main.scss dist/main.css
+  ```
 // abstracts
 
 @import 'abstracts/variables';
