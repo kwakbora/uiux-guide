@@ -60,4 +60,64 @@ npx sass --watch scss/main.scss dist/main.css
 @import 'pages/home';
 
 
+## variables.scss(CSS 변수 버전 예시)
+```bash
+:root {
+  /* Colors */
+  --color-primary: #3498db;
+  --color-secondary: #2ecc71;
+  --color-accent: #e74c3c;
+
+  --color-text: #333;
+  --color-bg: #f9f9f9;
+
+  /* Fonts */
+  --font-family-base: 'Arial', sans-serif;
+  --font-size-base: 16px;
+
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+}
+
+/* 다크모드 지원 */
+[data-theme="dark"] {
+  --color-primary: #9b59b6;
+  --color-secondary: #16a085;
+  --color-accent: #c0392b;
+
+  --color-text: #eee;
+  --color-bg: #222;
+}
+```
+
+### css변수(--) 를 사용하는 이유
+- Sass 변수($)
+
+1. 빌드(컴파일)할 때만 쓰임
+
+2. 최종 CSS에는 값으로만 남음
+
+3. 브라우저, JS에서는 접근 불가 (정적)
+
+- CSS 변수(--)
+
+1. 최종 CSS에 그대로 남음
+
+2. 브라우저 런타임에서 읽고 수정 가능
+
+3. 다크모드, 사용자 테마, JS 동적 제어에 유리 (동적)
 
