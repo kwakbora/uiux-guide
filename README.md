@@ -20,3 +20,38 @@ scss/
 
 ● pages → 개별 페이지 전용 스타일 (home, about 등)
 
+
+## main.scss 예시
+// abstracts
+
+@import 'abstracts/variables';
+
+@import 'abstracts/mixins';
+
+// base
+
+@import 'base/reset';
+
+@import 'base/typography';
+
+@import 'base/base';
+
+
+// layout
+
+@import 'layout/header';
+
+@import 'layout/footer';
+
+
+// components
+
+@import 'components/button';
+
+@import 'components/card';
+
+
+// pages
+
+@import 'pages/home';
+
