@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="inner-wrap">
-            <div class="nCommon-inner"><img src="./images/gnb.png" alt="Global Navigation"></div>
+            <div class="nCommon-inner"><img src="./images/gnb.png" alt="글로벌 네비게이션"></div>
         </div>
     </header>
     <!-- // header -->
@@ -45,7 +45,7 @@
             <a href="#none" class="tab_item nQuick-link1" id="quick02"><span class="hide">가입진행상황</span></a>
             <a href="#none" class="tab_item nQuick-link2" id="quick07"><span class="hide">채팅상담</span></a>
             <a href="#none" class="tab_item nQuick-link4" id="quick10"><span class="hide">카카오상담</span></a>
-            <a href="#none" class="nQuick-top nCommon-pe" title="가입상담으로 이동"><span class="hide">TOP</span></a>
+            <a href="#none" class="nQuick-top nCommon-pc" title="가입상담으로 이동"><span class="hide">TOP</span></a>
         </div>
     </aside>
     <!--// 스마트학 -->
@@ -60,93 +60,166 @@ window.addEventListener('DOMContentLoaded', function() {
     fn.quick();
 });
 
-var fn = {
-    quick: function() {
-        let offset = 15;
-        const tabItem = document.querySelectorAll('.tab_item');
-        const tabContent = document.querySelectorAll('.tab_content');
-        const banner = document.querySelector('.quick_banner');
-        const windowHeight = window.innerHeight;
-        const headerHeight = document.getElementById('header').offsetHeight;
-        const docHeight = Math.max(document.body.offsetHeight);
-        const btnScrollTop = document.querySelector('.nQuick-top');
-        const contoffsetTop = document.getElementById('cont2').offsetTop;
+// QuickMenu 모듈
+const QuickMenu = {
+    // 설정 상수
+    CONFIG: {
+        OFFSET: 15,
+        THRESHOLD: 0.8
+    },
 
-        function init() {
-            banner.style.top = (headerHeight + offset) + 'px';
-            event();
-            clickEvt();
+    // DOM 요소 캐시
+    elements: {},
+
+    // 초기화
+    init() {
+        this.cacheElements();
+        this.setupEventListeners();
+        this.setupIntersectionObserver();
+        this.initializeBanner();
+    },
+
+    // DOM 요소 캐싱
+    cacheElements() {
+        this.elements = {
+            tabItems: document.querySelectorAll('.tab_item'),
+            tabContents: document.querySelectorAll('.tab_content'),
+            banner: document.querySelector('.quick_banner'),
+            btnScrollTop: document.querySelector('.nQuick-top'),
+            header: document.getElementById('header'),
+            cont2: document.getElementById('cont2')
+        };
+    },
+
+    // 계산된 값들
+    getCalculatedValues() {
+        return {
+            windowHeight: window.innerHeight,
+            headerHeight: this.elements.header?.offsetHeight || 0,
+            docHeight: Math.max(document.body.offsetHeight, document.documentElement.offsetHeight),
+            cont2OffsetTop: this.elements.cont2?.offsetTop || 0
+        };
+    },
+
+    // 배너 초기화
+    initializeBanner() {
+        if (!this.elements.banner || !this.elements.header) {
+            console.warn('필수 DOM 요소를 찾을 수 없습니다.');
+            return;
         }
+        
+        const values = this.getCalculatedValues();
+        this.elements.banner.style.top = (values.headerHeight + this.CONFIG.OFFSET) + 'px';
+    },
 
-        function event() {
-            document.addEventListener('scroll', () => {
-                const scolly = window.scrollY || window.pageYOffset;
-                const footerHeight = document.getElementById('footer').offsetHeight;
-                
-                if (windowHeight + scolly >= docHeight) {
-                    console.log('')
-                } else if (scolly >= headerHeight) {
-                    banner.style.position = '';
-                    banner.style.top = (scolly + offset) + 'px';
-                } else {
-                    banner.style.position = '';
-                    banner.style.top = (headerHeight + offset) + 'px';
-                }
-                
-                if (scolly >= contoffsetTop) {
-                    banner.classList.add('show');
-                } else {
-                    banner.classList.remove('show');
-                }
-            });
+    // 이벤트 리스너 설정
+    setupEventListeners() {
+        this.setupScrollListener();
+        this.setupTabClickListeners();
+        this.setupTopButtonListener();
+    },
+
+    // 스크롤 이벤트 처리
+    setupScrollListener() {
+        document.addEventListener('scroll', () => {
+            const scolly = window.scrollY || window.pageYOffset;
+            const values = this.getCalculatedValues();
+            
+            this.updateBannerPosition(scolly, values);
+            this.updateBannerVisibility(scolly, values.cont2OffsetTop);
+        });
+    },
+
+    // 배너 위치 업데이트
+    updateBannerPosition(scrollY, values) {
+        if (!this.elements.banner) return;
+        
+        let bannerTop;
+        if (values.windowHeight + scrollY >= values.docHeight) {
+            // 페이지 하단에 도달했을 때의 처리
+            bannerTop = (values.docHeight - values.windowHeight + this.CONFIG.OFFSET) + 'px';
+        } else if (scrollY >= values.headerHeight) {
+            bannerTop = (scrollY + this.CONFIG.OFFSET) + 'px';
+        } else {
+            bannerTop = (values.headerHeight + this.CONFIG.OFFSET) + 'px';
         }
+        
+        this.elements.banner.style.position = '';
+        this.elements.banner.style.top = bannerTop;
+    },
 
-        btnScrollTop.addEventListener('click', function(e) {
+    // 배너 가시성 업데이트
+    updateBannerVisibility(scrollY, cont2OffsetTop) {
+        if (!this.elements.banner) return;
+        
+        const shouldShow = scrollY >= cont2OffsetTop;
+        this.elements.banner.classList.toggle('show', shouldShow);
+    },
+
+    // TOP 버튼 이벤트 처리
+    setupTopButtonListener() {
+        if (!this.elements.btnScrollTop) return;
+        
+        this.elements.btnScrollTop.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({
-                top: contOffsetTop,
+                top: 0,
                 behavior: 'smooth'
             });
         });
+    },
 
-        /* Animation 효과 */
+    // 탭 클릭 이벤트 처리
+    setupTabClickListeners() {
+        this.elements.tabItems.forEach((item, index) => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.activateTab(index);
+                this.scrollToTab(index);
+            });
+        });
+    },
+
+    // 탭 활성화
+    activateTab(index) {
+        this.elements.tabContents.forEach((content, i) => {
+            content.classList.toggle('active', i === index + 1);
+        });
+    },
+
+    // 탭으로 스크롤
+    scrollToTab(index) {
+        const targetContent = this.elements.tabContents[index + 1];
+        if (targetContent) {
+            window.scrollTo({
+                top: targetContent.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    },
+
+    // IntersectionObserver 설정
+    setupIntersectionObserver() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                } else {
-                    entry.target.classList.remove('show');
-                }
+                entry.target.classList.toggle('show', entry.isIntersecting);
             });
-        }, { threshold: 0.8 });
+        }, { threshold: this.CONFIG.THRESHOLD });
 
-        tabContent.forEach(content => {
+        // 관찰할 요소들 설정
+        this.elements.tabContents.forEach(content => {
             const p = content.querySelector('p');
             if (p) {
                 observer.observe(p);
             }
         });
+    }
+};
 
-        function clickEvt() {
-            tabItem.forEach((item, index) => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    tabContent.forEach((content, i) => {
-                        if (i === index + 1) {
-                            content.classList.add('active');
-                        } else {
-                            content.classList.remove('active');
-                        }
-                    });
-                    window.scrollTo({
-                        top: tabContent[index + 1].offsetTop,
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        }
-
-        init();
+// 기존 호환성을 위한 래퍼
+var fn = {
+    quick: function() {
+        QuickMenu.init();
     }
 };
 </script>
