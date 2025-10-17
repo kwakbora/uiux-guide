@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭 가이드</title>
+    <link rel="stylesheet" href="./tab2.css">
+</head>
+<body>
+    <div id="wrap">
+        <section class="container">
+            <h2>탭 가이드</h2>
+            
+            <div class="tabWrap tab_area" data-tab="tab">
+                <div class="tabDepth" role="tablist">
+                    <button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab1">
+                        <span>계약조회</span>
+                    </button>
+                    <button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab2">
+                        <span>계약변경</span>
+                    </button>
+                    <button type="button" class="tab-btn on" role="tablist" data-depth="0" data-idx="tab3">
+                        <span>납입/해지/환급</span>
+                    </button>
+                    <button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab4">
+                        <span>증명서발급</span>
+                    </button>
+                </div>s
+                
+                <div class="tabPanel">
+                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab1">
+                        <h3 class="hide">계약조회</h3>
+                        <p>계약조회 탭 영역입니다.</p>
+                    </section>
+                    
+                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab2">
+                        <h3 class="hide">계약변경</h3>
+                        <p>계약변경 탭 영역입니다.</p>
+                    </section>
+                    
+                    <section class="tabItems on" role="tabpanel" data-depth="0" data-idx="tab3">
+                        <h3 class="hide">납입/해지/환급</h3>
+                        <div class="inner_tab tab_area" data-tab="tab">
+                            <div class="inner_depth" role="tablist" data-tab-id="tabStyle1_1">
+                                <button type="button" class="tab-btn" role="tablist" data-depth="1" data-idx="a">
+                                    <span>inner1</span>
+                                </button>
+                                <button type="button" class="tab-btn on" role="tablist" data-depth="1" data-idx="b">
+                                    <span>inner2</span>
+                                </button>
+                                <button type="button" class="tab-btn" role="tablist" data-depth="1" data-idx="c">
+                                    <span>inner3</span>
+                                </button>
+                                <button type="button" class="tab-btn" role="tablist" data-depth="1" data-idx="d">
+                                    <span>inner4</span>
+                                </button>
+                            </div>
+                            
+                            <div class="tabPanel">
+                                <section class="tabItems" role="tabpanel" data-depth="1" data-idx="a">
+                                    <p>inner1 영역입니다.</p>
+                                </section>
+                                <section class="tabItems on" role="tabpanel" data-depth="1" data-idx="b">
+                                    <p>inner2 영역입니다.</p>
+                                </section>
+                                <section class="tabItems" role="tabpanel" data-depth="1" data-idx="c">
+                                    <p>inner3 영역입니다.</p>
+                                </section>
+                                <section class="tabItems" role="tabpanel" data-depth="1" data-idx="d">
+                                    <p>inner4 영역입니다.</p>
+                                </section>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab4">
+                        <h3 class="hide">증명서발급</h3>
+                        <p>증명서발급 탭 영역입니다.</p>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            fn.tab();
+        });
+
+        var fn = {
+            tab: function() {
+                function init() {
+                    const wrapEl = document.querySelectorAll('[data-tab="tab"]');
+                    bindingTabEvent(wrapEl);
+                }
+
+                function findParent(el, className) {
+                    const check = el.parentNode.classList.contains(className);
+                    if (check === true) {
+                        return el.parentNode;
+                    } else {
+                        return findParent(el.parentNode, className);
+                    }
+                }
+
+                function bindingTabEvent(wrap) {
+                    wrap.forEach(tabArea => {
+                        const btn = tabArea.querySelectorAll('.tab-btn');
+                        const contents = tabArea.querySelectorAll('.tabItems');
+                        
+                        contents.forEach(obj => {
+                            let isMatch = obj.classList.contains('on');
+                            obj.setAttribute('aria-hidden', (isMatch).toString());
+                        });
+
+                        btn.forEach(item => {
+                            let isMatch = item.classList.contains('on');
+                            if (isMatch === true) {
+                                item.setAttribute('aria-selected', 'true');
+                                item.setAttribute('tabindex', '0');
+                            } else {
+                                item.setAttribute('aria-selected', 'false');
+                                item.setAttribute('tabindex', '-1');
+                            }
+
+                            item.addEventListener('click', function() {
+                                const parent = findParent(this, 'tab_area');
+                                const idx = this.dataset['idx'];
+                                const depth = this.dataset['depth'];
+                                const btnArr = parent.querySelectorAll('.tab-btn[data-depth="' + depth + '"]');
+                                const contentArr = parent.querySelectorAll('.tabItems[data-depth="' + depth + '"]');
+                                const contentWrap = parent.querySelector('.tabItems[data-idx="' + idx + '"][data-depth="' + depth + '"]');
+
+                                btnArr.forEach(btn => {
+                                    btn.classList.remove('on');
+                                    btn.setAttribute('aria-selected', 'false');
+                                    btn.setAttribute('tabindex', '-1');
+                                });
+
+                                this.classList.add('on');
+                                contentArr.forEach(content => {
+                                    content.classList.remove('on');
+                                    content.setAttribute('aria-hidden', 'false');
+                                });
+                                contentWrap.classList.add('on');
+                                contentWrap.setAttribute('aria-hidden', 'true');
+
+                                if (this.classList.contains('on') === true) {
+                                    this.setAttribute('aria-selected', 'true');
+                                    this.setAttribute('tabindex', '0');
+                                }
+                            });
+                        });
+                    });
+                }
+
+                init();
+            }
+        };
+    </script>
+</body>
+</html>

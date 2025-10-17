@@ -1,0 +1,144 @@
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    text-rendering: none;
+    background-color: transparent;
+    font-family: "NanumBarunGothic", "돋움", Dotum, "굴림", Gulim, Arial, "Trebuchet MS", Verdana, "Sans-serif";
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+button{
+	display:block;
+	border: none;
+	background: none;
+	cursor: pointer;
+	padding:0;
+	margin:0;
+}
+.hide {
+    overflow: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-indent: -9999px !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+.container {
+    box-sizing: border-box;
+    padding: 30px 60px 60px 60px;
+    width: 1060px;
+    margin: 0 auto;
+}
+
+.container h2 {
+    font-size: 34px;
+    font-family: "NanumBarunGothicBold";
+    color: #001871;
+    /* color: #0073ae; */
+    text-align: center;
+    line-height: 92px;
+    border-bottom: 1px solid #d1d0ce;
+    margin-bottom: 20px;
+}
+
+.tabWrap{}
+
+.tabDepth {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 30px 40px;
+}
+
+.tabDepth button {
+    text-align: center;
+    font-size: 14px;
+    border-left: 1px solid #fff;
+    width: 100%;
+}
+
+.tabDepth button span {
+    display: block;
+    color: #1f1f20;
+    font-weight: 400;
+    letter-spacing: -1px;
+    background-color: #e9eaeb;
+    padding-block: 18px 16px;
+}
+
+.tabDepth button:first-child {
+    border-left: 0;
+}
+
+.tabDepth button.on span {
+    position: relative;
+    cursor: default;
+    color: #fff;
+    background-color: #001871;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.tabDepth button.on span:after {
+    content: "";
+    display: inline-block;
+    border-color: #001871 transparent transparent transparent;
+    border-style: solid;
+    border-width: 7px 7px 0 7px;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    bottom: -7px;
+}
+
+.tabItems {
+    display: none;
+}
+
+.tabItems.on {
+    display: block;
+}
+
+.inner_tab .inner_depth {
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+    padding-block: 15px 50px;
+}
+
+.inner_tab .inner_depth button.on {
+    border-bottom: 2px solid #001871;
+    padding-bottom: 5px;
+}
+
+.inner_tab .tabPanel {
+    border: 1px solid #777;
+    padding: 30px 20px;
+}

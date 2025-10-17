@@ -1,0 +1,193 @@
+*{margin:0; padding:0; box-sizing: border-box;}
+body{
+  font-family: 'Pretendard', sans-serif;
+}
+.container{max-width: 90rem; margin: 0 auto;}
+/* 탭 컨테이너 */
+box {
+	width: 100%;
+	padding:2rem;
+	box-sizing: border-box;
+	display:block;
+}
+[data-tab]{
+  width: 100%;
+  padding:2rem;
+}
+/* 탭 네비게이션 */
+[data-tab-nav] {
+  width: 100%;
+  border:1px solid #e0e0e0;
+  display:flex;
+  overflow-x:auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scroll-behavior: smooth;
+}
+
+[data-tab-nav]::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+[role=tablist]{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: 100%;
+  min-width: max-content;
+  background: #f8f9fa;
+}
+/* 탭 버튼 */
+[data-tab-btn] {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+	background-color: #f2f2f2;
+}
+
+[data-tab="tab-wrap2"] [data-tab-btn] {
+  flex: 0 0 25%; /* 4개씩 보이도록 고정 너비 */
+  min-width: 150px; /* 최소 너비 설정 */
+}
+
+/* 탭 개수가 4개 미만일 때만 유동적 조정 */
+[data-tab="tab-wrap2"] [role="tablist"] [data-tab-btn]:only-child {
+  flex: 0 0 100%; /* 1개일 때 전체 너비 */
+}
+
+[data-tab="tab-wrap2"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(2),
+[data-tab="tab-wrap2"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(2) ~ [data-tab-btn] {
+  flex: 0 0 50%; /* 2개일 때 절반씩 */
+}
+
+[data-tab="tab-wrap2"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(3),
+[data-tab="tab-wrap2"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(3) ~ [data-tab-btn] {
+  flex: 0 0 33.333%; /* 3개일 때 3등분 */
+}
+
+/* tab-wrap3 스타일 (탭 안에 탭) */
+[data-tab="tab-wrap3"] [data-tab-btn] {
+  flex: 0 0 25%; /* 4개씩 보이도록 고정 너비 */
+  min-width: 150px; /* 최소 너비 설정 */
+}
+
+/* tab-wrap3 탭 개수가 4개 미만일 때만 유동적 조정 */
+[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:only-child {
+  flex: 0 0 100%; /* 1개일 때 전체 너비 */
+}
+
+[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(2),
+[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(2) ~ [data-tab-btn] {
+  flex: 0 0 50%; /* 2개일 때 절반씩 */
+}
+
+[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(3),
+[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(3) ~ [data-tab-btn] {
+  flex: 0 0 33.333%; /* 3개일 때 3등분 */
+}
+
+/* 중첩 탭 스타일 - 50% 너비 */
+[data-tab="nested-tab"] [data-tab-btn] {
+  flex: 0 0 50%; /* 2개씩 보이도록 고정 너비 */
+  min-width: 120px; /* 최소 너비 설정 */
+}
+
+[data-tab-btn]:hover {
+  background: #e9ecef;
+  color: #333;
+}
+
+[data-tab-btn][data-tab-active="true"] {
+  background: #fff;
+  color: #007bff;
+  border-bottom: 3px solid #007bff;
+  font-weight: 600;
+}
+
+/* 탭 콘텐츠 */
+[data-tab-content] {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  min-height: 300px;
+}
+
+/* 탭 패널 */
+[data-tab-panel] {
+  display: none;
+  padding: 30px;
+}
+
+[data-tab-panel][data-tab-active="true"] {
+  display: block;
+}
+
+/* 패널 내용 */
+[data-tab-panel] h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+[data-tab-panel] p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* 스크롤 옵션을 위한 스타일 */
+[data-option="scroll"] [data-tab-nav] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+[data-option="scroll"] [data-tab-nav]::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+[data-option="scroll"] .tab-menu {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+[data-option="scroll"] .tab-menu li {
+  flex-shrink: 0;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  [data-tab] {
+    margin: 20px;
+  }
+  
+  [data-tab-nav] {
+    flex-direction: column;
+  }
+  
+  [data-tab-btn] {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  [data-tab-panel] {
+    padding: 20px;
+  }
+  
+  [data-tab-panel] h3 {
+    font-size: 20px;
+  }
+}

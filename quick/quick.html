@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Menu</title>    
+    <link rel="stylesheet" href="./quick.css">
+</head>
+<body>
+    <header id="header">
+        <div class="nCommon-utillWrap nCommon-pc">
+            <div class="nCommon-inner">
+                <div class="utill-left">
+                    <a href="#none" id="siteTypeSel1" class="active">개인</a>
+                    <a href="#none" id="siteTypeSel2">기업</a>
+                </div>
+                <div class="utill-right">
+                    <a href="#none" id="login" class="active">로그인</a>
+                    <a href="#none">소비자포털</a>
+                    <a href="#none">공시실</a>
+                    <a href="#none">회사소개</a>
+                    <a href="#none" target="_blank" rel="noopener noreferrer" title="새창열림">AIG Worldwide</a>
+                </div>
+            </div>
+        </div>
+        <div class="inner-wrap">
+            <div class="nCommon-inner"><img src="./images/gnb.png" alt="Global Navigation"></div>
+        </div>
+    </header>
+    <!-- // header -->
+    
+    <div class="aigContainer">
+        <div class="spacer">스크롤해보세요</div>
+        <div id="cont1" class="nCommon-inner tab_content"><p>container</p></div>
+        <div id="cont2" class="nCommon-inner tab_content"><p>가입상담content</p></div>
+        <div id="cont3" class="nCommon-inner tab_content"><p>가입진행상황content</p></div>
+        <div id="cont4" class="nCommon-inner tab_content"><p>채팅상담content</p></div>
+        <div id="cont5" class="nCommon-inner tab_content"><p>카카오상담content</p></div>
+    </div>
+    
+    <aside id="nAside" class="quick_banner">
+        <div class="nQuick-link">
+            <button type="button" class="nQuick-close nCommon-mobile"><span class="hide">퀵메뉴 닫기</span></button>
+            <a href="#none" class="tab_item nQuick-link3" id="quick08"><span class="hide">가입상담</span></a>
+            <a href="#none" class="tab_item nQuick-link1" id="quick02"><span class="hide">가입진행상황</span></a>
+            <a href="#none" class="tab_item nQuick-link2" id="quick07"><span class="hide">채팅상담</span></a>
+            <a href="#none" class="tab_item nQuick-link4" id="quick10"><span class="hide">카카오상담</span></a>
+            <a href="#none" class="nQuick-top nCommon-pe" title="가입상담으로 이동"><span class="hide">TOP</span></a>
+        </div>
+    </aside>
+    <!--// 스마트학 -->
+    
+    <footer id="footer">
+        <div class="nCommon-inner"><img src="./images/footer.png" alt="Footer"></div>
+    </footer>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    fn.quick();
+});
+
+var fn = {
+    quick: function() {
+        let offset = 15;
+        const tabItem = document.querySelectorAll('.tab_item');
+        const tabContent = document.querySelectorAll('.tab_content');
+        const banner = document.querySelector('.quick_banner');
+        const windowHeight = window.innerHeight;
+        const headerHeight = document.getElementById('header').offsetHeight;
+        const docHeight = Math.max(document.body.offsetHeight);
+        const btnScrollTop = document.querySelector('.nQuick-top');
+        const contoffsetTop = document.getElementById('cont2').offsetTop;
+
+        function init() {
+            banner.style.top = (headerHeight + offset) + 'px';
+            event();
+            clickEvt();
+        }
+
+        function event() {
+            document.addEventListener('scroll', () => {
+                const scolly = window.scrollY || window.pageYOffset;
+                const footerHeight = document.getElementById('footer').offsetHeight;
+                
+                if (windowHeight + scolly >= docHeight) {
+                    console.log('')
+                } else if (scolly >= headerHeight) {
+                    banner.style.position = '';
+                    banner.style.top = (scolly + offset) + 'px';
+                } else {
+                    banner.style.position = '';
+                    banner.style.top = (headerHeight + offset) + 'px';
+                }
+                
+                if (scolly >= contoffsetTop) {
+                    banner.classList.add('show');
+                } else {
+                    banner.classList.remove('show');
+                }
+            });
+        }
+
+        btnScrollTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: contOffsetTop,
+                behavior: 'smooth'
+            });
+        });
+
+        /* Animation 효과 */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, { threshold: 0.8 });
+
+        tabContent.forEach(content => {
+            const p = content.querySelector('p');
+            if (p) {
+                observer.observe(p);
+            }
+        });
+
+        function clickEvt() {
+            tabItem.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tabContent.forEach((content, i) => {
+                        if (i === index + 1) {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
+                    window.scrollTo({
+                        top: tabContent[index + 1].offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+
+        init();
+    }
+};
+</script>
+</body>
+</html>
