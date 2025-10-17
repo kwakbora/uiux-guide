@@ -1,26 +1,42 @@
 @charset "utf-8";
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+/* CSS 변수 정의 */
+:root {
+    --primary-color: #001871;
+    --secondary-color: #e9eaeb;
+    --text-color: #1f1f20;
+    --white: #fff;
+    --border-color: #777;
+    --border-light: #d1d0ce;
+    --font-family: "NanumBarunGothic", "돋움", Dotum, "굴림", Gulim, Arial, "Trebuchet MS", Verdana, "Sans-serif";
+    --font-family-bold: "NanumBarunGothicBold";
+}
+
+/* 최적화된 CSS 리셋 */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 0;
+}
+
+html {
     font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    line-height: normal;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-color);
     letter-spacing: -0.3px;
-    text-rendering: none;
-    background-color: transparent;
-    font-family: "NanumBarunGothic", "돋움", Dotum, "굴림", Gulim, Arial, "Trebuchet MS", Verdana, "Sans-serif";
+    background-color: var(--white);
 }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
-}
-
-body {
-    line-height: 1;
 }
 
 ol, ul {
@@ -30,25 +46,56 @@ ol, ul {
 blockquote, q {
     quotes: none;
 }
-button{
-	display:block;
-	border: none;
-	background: none;
-	cursor: pointer;
-	padding:0;
-	margin:0;
+
+/* 버튼 기본 스타일 */
+button {
+    display: block;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
 }
+
+/* 접근성 개선: 포커스 스타일 */
+button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+/* 접근성을 고려한 숨김 처리 */
 .hide {
-    overflow: hidden !important;
-    width: 0 !important;
-    height: 0 !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    text-indent: -9999px !important;
-    position: absolute !important;
-    left: -9999px !important;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 스크린 리더 전용 텍스트 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .container {
@@ -58,18 +105,27 @@ button{
     margin: 0 auto;
 }
 
-.container h2 {
+.container h1 {
     font-size: 34px;
-    font-family: "NanumBarunGothicBold";
-    color: #001871;
-    /* color: #0073ae; */
+    font-family: var(--font-family-bold);
+    color: var(--primary-color);
     text-align: center;
     line-height: 92px;
-    border-bottom: 1px solid #d1d0ce;
+    border-bottom: 1px solid var(--border-light);
     margin-bottom: 20px;
 }
 
-.tabWrap{}
+.container h2 {
+    font-size: 34px;
+    font-family: var(--font-family-bold);
+    color: var(--primary-color);
+    text-align: left;
+    line-height: 92px;
+    margin-top: 40px;
+}
+.tabWrap {
+    /* 탭 래퍼 스타일 */
+}
 
 .tabDepth {
     display: flex;
@@ -80,16 +136,15 @@ button{
 .tabDepth button {
     text-align: center;
     font-size: 14px;
-    border-left: 1px solid #fff;
-    width: 100%;
+    border-left: 1px solid var(--white);
+    flex: 1;
 }
-
 .tabDepth button span {
     display: block;
-    color: #1f1f20;
+    color: var(--text-color);
     font-weight: 400;
     letter-spacing: -1px;
-    background-color: #e9eaeb;
+    background-color: var(--secondary-color);
     padding-block: 18px 16px;
 }
 
@@ -100,8 +155,8 @@ button{
 .tabDepth button.on span {
     position: relative;
     cursor: default;
-    color: #fff;
-    background-color: #001871;
+    color: var(--white);
+    background-color: var(--primary-color);
     font-weight: 700;
     font-size: 16px;
 }
@@ -109,12 +164,11 @@ button{
 .tabDepth button.on span:after {
     content: "";
     display: inline-block;
-    border-color: #001871 transparent transparent transparent;
+    border-color: var(--primary-color) transparent transparent transparent;
     border-style: solid;
     border-width: 7px 7px 0 7px;
     position: absolute;
     left: 50%;
-    translate: -50%;
     bottom: -7px;
 }
 
@@ -134,11 +188,12 @@ button{
 }
 
 .inner_tab .inner_depth button.on {
-    border-bottom: 2px solid #001871;
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 5px;
 }
 
 .inner_tab .tabPanel {
-    border: 1px solid #777;
+    border: 1px solid var(--border-color);
     padding: 30px 20px;
+    border-radius: 4px;
 }

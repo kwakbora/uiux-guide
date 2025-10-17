@@ -74,27 +74,6 @@ box {
   flex: 0 0 33.333%; /* 3개일 때 3등분 */
 }
 
-/* tab-wrap3 스타일 (탭 안에 탭) */
-[data-tab="tab-wrap3"] [data-tab-btn] {
-  flex: 0 0 25%; /* 4개씩 보이도록 고정 너비 */
-  min-width: 150px; /* 최소 너비 설정 */
-}
-
-/* tab-wrap3 탭 개수가 4개 미만일 때만 유동적 조정 */
-[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:only-child {
-  flex: 0 0 100%; /* 1개일 때 전체 너비 */
-}
-
-[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(2),
-[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(2) ~ [data-tab-btn] {
-  flex: 0 0 50%; /* 2개일 때 절반씩 */
-}
-
-[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(3),
-[data-tab="tab-wrap3"] [role="tablist"] [data-tab-btn]:first-child:nth-last-child(3) ~ [data-tab-btn] {
-  flex: 0 0 33.333%; /* 3개일 때 3등분 */
-}
-
 /* 중첩 탭 스타일 - 50% 너비 */
 [data-tab="nested-tab"] [data-tab-btn] {
   flex: 0 0 50%; /* 2개씩 보이도록 고정 너비 */
