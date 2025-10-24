@@ -1,206 +1,202 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Menu</title>    
-    <link rel="stylesheet" href="./quick.css">
-</head>
-<body>
-    <header id="header">
-        <div class="nCommon-utillWrap nCommon-pc">
-            <div class="nCommon-inner">
-                <div class="utill-left">
-                    <a href="#none" id="siteTypeSel1" class="active">개인</a>
-                    <a href="#none" id="siteTypeSel2">기업</a>
-                </div>
-                <div class="utill-right">
-                    <a href="#none" id="login" class="active">로그인</a>
-                    <a href="#none">소비자포털</a>
-                    <a href="#none">공시실</a>
-                    <a href="#none">회사소개</a>
-                    <a href="#none" target="_blank" rel="noopener noreferrer" title="새창열림">AIG Worldwide</a>
-                </div>
-            </div>
-        </div>
-        <div class="inner-wrap">
-            <div class="nCommon-inner"><img src="./images/gnb.png" alt="글로벌 네비게이션"></div>
-        </div>
-    </header>
-    <!-- // header -->
-    
-    <div class="aigContainer">
-        <div class="spacer">스크롤해보세요</div>
-        <div id="cont1" class="nCommon-inner tab_content"><p>container</p></div>
-        <div id="cont2" class="nCommon-inner tab_content"><p>가입상담content</p></div>
-        <div id="cont3" class="nCommon-inner tab_content"><p>가입진행상황content</p></div>
-        <div id="cont4" class="nCommon-inner tab_content"><p>채팅상담content</p></div>
-        <div id="cont5" class="nCommon-inner tab_content"><p>카카오상담content</p></div>
-    </div>
-    
-    <aside id="nAside" class="quick_banner">
-        <div class="nQuick-link">
-            <button type="button" class="nQuick-close nCommon-mobile"><span class="hide">퀵메뉴 닫기</span></button>
-            <a href="#none" class="tab_item nQuick-link3" id="quick08"><span class="hide">가입상담</span></a>
-            <a href="#none" class="tab_item nQuick-link1" id="quick02"><span class="hide">가입진행상황</span></a>
-            <a href="#none" class="tab_item nQuick-link2" id="quick07"><span class="hide">채팅상담</span></a>
-            <a href="#none" class="tab_item nQuick-link4" id="quick10"><span class="hide">카카오상담</span></a>
-            <a href="#none" class="nQuick-top nCommon-pc" title="가입상담으로 이동"><span class="hide">TOP</span></a>
-        </div>
-    </aside>
-    <!--// 스마트학 -->
-    
-    <footer id="footer">
-        <div class="nCommon-inner"><img src="./images/footer.png" alt="Footer"></div>
-    </footer>
-</div>
+	<!DOCTYPE html>
+	<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Quick Menu</title>    
+		<link rel="stylesheet" href="./quick.css">
+	</head>
+	<body>
+		<header id="header">
+				<div class="nCommon-utillWrap nCommon-pc">
+						<div class="nCommon-inner">
+								<div class="utill-left">
+										<a href="#none" id="siteTypeSel1" class="active">개인</a>
+										<a href="#none" id="siteTypeSel2">기업</a>
+								</div>
+								<div class="utill-right">
+										<a href="#none" id="login" class="active">로그인</a>
+										<a href="#none">소비자포털</a>
+										<a href="#none">공시실</a>
+										<a href="#none">회사소개</a>
+										<a href="#none" target="_blank" rel="noopener noreferrer" title="새창열림">AIG Worldwide</a>
+								</div>
+						</div>
+				</div>
+				<div class="inner-wrap">
+						<div class="nCommon-inner"><img src="./images/gnb.png" alt="글로벌 네비게이션"></div>
+				</div>
+		</header>
+		<!-- // header -->
+		
+		<div class="aigContainer">
+				<div class="spacer">스크롤해보세요</div>
+				<div id="cont1" class="nCommon-inner tab_content"><p>container</p></div>
+				<div id="cont2" class="nCommon-inner tab_content"><p>가입상담content</p></div>
+				<div id="cont3" class="nCommon-inner tab_content"><p>가입진행상황content</p></div>
+				<div id="cont4" class="nCommon-inner tab_content"><p>채팅상담content</p></div>
+				<div id="cont5" class="nCommon-inner tab_content"><p>카카오상담content</p></div>
+		</div>
+		
+		<aside id="nAside" class="quick_banner">
+				<div class="nQuick-link">
+						<button type="button" class="nQuick-close nCommon-mobile"><span class="sr-hidden">퀵메뉴 닫기</span></button>
+						<a href="#none" class="tab_item nQuick-link3" id="quick08"><span class="sr-hidden">가입상담</span></a>
+						<a href="#none" class="tab_item nQuick-link1" id="quick02"><span class="sr-hidden">가입진행상황</span></a>
+						<a href="#none" class="tab_item nQuick-link2" id="quick07"><span class="sr-hidden">채팅상담</span></a>
+						<a href="#none" class="tab_item nQuick-link4" id="quick10"><span class="sr-hidden">카카오상담</span></a>
+						<a href="#none" class="nQuick-top nCommon-pc" title="가입상담으로 이동"><span class="sr-hidden">TOP</span></a>
+				</div>
+		</aside>
+		<!--// 스마트학 -->
+		
+		<footer id="footer">
+				<div class="nCommon-inner"><img src="./images/footer.png" alt="Footer"></div>
+		</footer>
+	</div>
 
-<script>
-window.addEventListener('DOMContentLoaded', function() {
-    fn.quick();
-});
+	<script>
+	class QuickMenu {
+		CONFIG = {
+				OFFSET: 15,
+				THRESHOLD: 0.8
+		};
 
-// QuickMenu 모듈
-const QuickMenu = {
-    // 설정 상수
-    CONFIG: {
-        OFFSET: 15,
-        THRESHOLD: 0.8
-    },
+		elements = {};
 
-    // DOM 요소 캐시
-    elements: {},
+		constructor() {
+				this.init();
+		}
 
-    // 초기화
-    init() {
-        this.cacheElements();
-        this.setupEventListeners();
-        this.setupIntersectionObserver();
-        this.initializeBanner();
-    },
+		// 초기화
+		init = () => {
+				this.cacheElements();
+				this.setupEventListeners();
+				this.setupIntersectionObserver();
+				this.initializeBanner();
+		};
 
-    // DOM 요소 캐싱
-    cacheElements() {
-        this.elements = {
-            tabItems: document.querySelectorAll('.tab_item'),
-            tabContents: document.querySelectorAll('.tab_content'),
-            banner: document.querySelector('.quick_banner'),
-            btnScrollTop: document.querySelector('.nQuick-top'),
-            header: document.getElementById('header'),
-            cont2: document.getElementById('cont2')
-        };
-    },
+		// DOM 캐싱
+		cacheElements = () => {
+				this.elements = {
+						tabItems: document.querySelectorAll('.tab_item'),
+						tabContents: document.querySelectorAll('.tab_content'),
+						banner: document.querySelector('.quick_banner'),
+						btnScrollTop: document.querySelector('.nQuick-top'),
+						header: document.getElementById('header')
+				};
+		};
 
-    // 계산된 값들
-    getCalculatedValues() {
-        return {
-            windowHeight: window.innerHeight,
-            headerHeight: this.elements.header?.offsetHeight || 0,
-            docHeight: Math.max(document.body.offsetHeight, document.documentElement.offsetHeight),
-            cont2OffsetTop: this.elements.cont2?.offsetTop || 0
-        };
-    },
+		// 계산된 값
+		getCalculatedValues = () => {
+					return{
+				windowHeight: window.innerHeight,
+				headerHeight: this.elements.header?.offsetHeight || 0,
+				docHeight: Math.max(document.body.offsetHeight, document.documentElement.offsetHeight),
+				cont2OffsetTop: document.getElementById('cont2').offsetTop || 0
+		}
+		};
 
-    // 배너 초기화
-    initializeBanner() {
-        if (!this.elements.banner || !this.elements.header) {
-            console.warn('필수 DOM 요소를 찾을 수 없습니다.');
-            return;
-        }
-        
-        const values = this.getCalculatedValues();
-        this.elements.banner.style.top = (values.headerHeight + this.CONFIG.OFFSET) + 'px';
-    },
+		// 배너 초기화
+		initializeBanner = () => {
+				const { banner, header } = this.elements;
+				if (!banner || !header) return console.warn('필수 DOM 요소를 찾을 수 없습니다.');
 
-    // 이벤트 리스너 설정
-    setupEventListeners() {
-        this.setupScrollListener();
-        this.setupTabClickListeners();
-        this.setupTopButtonListener();
-    },
+				const { headerHeight } = this.getCalculatedValues();
+				banner.style.top = `${headerHeight + this.CONFIG.OFFSET}px`;
+		};
 
-    // 스크롤 이벤트 처리
-    setupScrollListener() {
-        document.addEventListener('scroll', () => {
-            const scolly = window.scrollY || window.pageYOffset;
-            const values = this.getCalculatedValues();
-            
-            this.updateBannerPosition(scolly, values);
-            this.updateBannerVisibility(scolly, values.cont2OffsetTop);
-        });
-    },
+		// 이벤트 리스너
+		setupEventListeners = () => {
+				this.setupScrollListener();
+				this.setupTabClickListeners();
+				this.setupTopButtonListener();
+		};
 
-    // 배너 위치 업데이트
-    updateBannerPosition(scrollY, values) {
-        if (!this.elements.banner) return;
-        
-        let bannerTop;
-        if (values.windowHeight + scrollY >= values.docHeight) {
-            // 페이지 하단에 도달했을 때의 처리
-            bannerTop = (values.docHeight - values.windowHeight + this.CONFIG.OFFSET) + 'px';
-        } else if (scrollY >= values.headerHeight) {
-            bannerTop = (scrollY + this.CONFIG.OFFSET) + 'px';
-        } else {
-            bannerTop = (values.headerHeight + this.CONFIG.OFFSET) + 'px';
-        }
-        
-        this.elements.banner.style.position = '';
-        this.elements.banner.style.top = bannerTop;
-    },
+		// 스크롤 리스너 (requestAnimationFrame 최적화)
+		setupScrollListener = () => {
+				
+				document.addEventListener('scroll', () => {
+						const scrollY = window.scrollY || window.pageYOffset;
+						const values = this.getCalculatedValues();
+						this.updateBannerPosition(scrollY, values);
+						this.updateBannerVisibility(scrollY, values);
+				});
+		};
 
-    // 배너 가시성 업데이트
-    updateBannerVisibility(scrollY, cont2OffsetTop) {
-        if (!this.elements.banner) return;
-        
-        const shouldShow = scrollY >= cont2OffsetTop;
-        this.elements.banner.classList.toggle('show', shouldShow);
-    },
+		// 배너 위치 업데이트
+		updateBannerPosition = (scrollY, values) => {
+				const { banner } = this.elements;
+				if (!banner) return;
 
-    // TOP 버튼 이벤트 처리
-    setupTopButtonListener() {
-        if (!this.elements.btnScrollTop) return;
-        
-        this.elements.btnScrollTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    },
+				let bannerTop;
+				if (values.windowHeight + scrollY >= values.docHeight) {
+				} else if (scrollY >= values.headerHeight) {
+						banner.style.top= (scrollY + this.CONFIG.OFFSET) + 'px'
+				} else {
+						banner.style.top = (values.headerHeight + this.CONFIG.OFFSET) + 'px'
+				}
 
-    // 탭 클릭 이벤트 처리
-    setupTabClickListeners() {
-        this.elements.tabItems.forEach((item, index) => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.activateTab(index);
-                this.scrollToTab(index);
-            });
-        });
-    },
+				banner.style.position = '';
+				// banner.style.top = bannerTop;
+		};
 
-    // 탭 활성화
-    activateTab(index) {
-        this.elements.tabContents.forEach((content, i) => {
-            content.classList.toggle('active', i === index + 1);
-        });
-    },
+		// 배너 가시성 업데이트
+		updateBannerVisibility = (scrollY, values) => {
+				const { banner } = this.elements;
+				if (!banner) return;
 
-    // 탭으로 스크롤
-    scrollToTab(index) {
-        const targetContent = this.elements.tabContents[index + 1];
-        if (targetContent) {
-            window.scrollTo({
-                top: targetContent.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    },
+			//  banner.classList.toggle('show', scrollY >= cont2OffsetTop); 기존꺼 붙임
+				if (scrollY >= values.cont2OffsetTop) {
+						banner.classList.add('show');
+				} else {
+						banner.classList.remove('show');
+				}
+		};
 
-    // IntersectionObserver 설정
-    setupIntersectionObserver() {
-        const observer = new IntersectionObserver((entries) => {
+		// TOP 버튼
+		setupTopButtonListener = () => {
+				const { btnScrollTop } = this.elements;
+				if (!btnScrollTop) return;
+
+				btnScrollTop.addEventListener('click', e => {
+						e.preventDefault();
+						window.scrollTo({ top: 0, behavior: 'smooth' });
+				});
+		};
+
+		// 탭 클릭 리스너
+		setupTabClickListeners = () => {
+				this.elements.tabItems.forEach((item, index) => {
+						item.addEventListener('click', e => {
+								e.preventDefault();
+								this.activateTab(index);
+								this.scrollToTab(index);
+						});
+				});
+		};
+
+		// 탭 활성화
+		activateTab = (index) => {
+				this.elements.tabContents.forEach((content, i) => {
+						content.classList.toggle('active', i === index);
+				});
+		};
+
+		// 탭으로 스크롤 이동
+		scrollToTab = (index) => {
+				const target = this.elements.tabContents[index];
+				if (target) {
+						window.scrollTo({
+								top: target.offsetTop,
+								behavior: 'smooth'
+						});
+				}
+		};
+
+		// IntersectionObserver 설정
+		setupIntersectionObserver = () => {
+			const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 entry.target.classList.toggle('show', entry.isIntersecting);
             });
@@ -213,15 +209,14 @@ const QuickMenu = {
                 observer.observe(p);
             }
         });
-    }
-};
+		};
+	}
 
-// 기존 호환성을 위한 래퍼
-var fn = {
-    quick: function() {
-        QuickMenu.init();
-    }
-};
-</script>
-</body>
+	const quickMenu = new QuickMenu();
+	quickMenu.init();
+
+	// window에서도 접근 가능하도록 등록
+	window.quickMenu = quickMenu;
+	</script>
+	</body>
 </html>

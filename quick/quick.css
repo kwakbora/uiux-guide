@@ -57,7 +57,7 @@ button{
 	margin:0;
 }
 /* 스크린 리더 전용 텍스트 - 접근성 개선 */
-.hide {
+.sr-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
