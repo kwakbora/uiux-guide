@@ -73,7 +73,7 @@ button:focus-visible {
     outline-offset: 2px;
 }
 /* 접근성을 고려한 숨김 처리 */
-.hide {
+.sr-hidden {
     position: absolute;
     width: 1px;
     height: 1px;

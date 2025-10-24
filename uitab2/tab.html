@@ -1,239 +1,283 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>탭 가이드</title>
-    <link rel="stylesheet" href="./tab2.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>탭 가이드</title>
+	<link rel="stylesheet" href="./tab2.css">
 </head>
 <body>
-    <div id="wrap">
-        <section class="container">
-            <h1>탭 가이드</h1>
-            <h2>1. 탭 중첩</h2>
-            <div class="tabWrap tab_area" data-tab="tab">
-                <div class="tabDepth" role="tablist">
-                    <button type="button" class="tab-btn" role="tab" data-depth="0" data-idx="tab1">
-                        <span>계약조회</span>
-                    </button>
-                    <button type="button" class="tab-btn" role="tab" data-depth="0" data-idx="tab2">
-                        <span>계약변경</span>
-                    </button>
-                    <button type="button" class="tab-btn on" role="tab" data-depth="0" data-idx="tab3">
-                        <span>납입/해지/환급</span>
-                    </button>
-                    <button type="button" class="tab-btn" role="tab" data-depth="0" data-idx="tab4">
-                        <span>증명서발급</span>
-                    </button>
-                </div>
-                
-                <div class="tabPanel">
-                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab1">
-                        <h3 class="hide">계약조회</h3>
-                        <p>계약조회 탭 영역입니다.</p>
-                    </section>
-                    
-                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab2">
-                        <h3 class="hide">계약변경</h3>
-                        <p>계약변경 탭 영역입니다.</p>
-                    </section>
-                    
-                    <section class="tabItems on" role="tabpanel" data-depth="0" data-idx="tab3">
-                        <h3 class="hide">납입/해지/환급</h3>
-                        <div class="inner_tab tab_area" data-tab="tab">
-                            <div class="inner_depth" role="tablist" data-tab-id="tabStyle1_1">
-                                <button type="button" class="tab-btn" role="tab" data-depth="1" data-idx="a">
-                                    <span>inner1</span>
-                                </button>
-                                <button type="button" class="tab-btn on" role="tab" data-depth="1" data-idx="b">
-                                    <span>inner2</span>
-                                </button>
-                                <button type="button" class="tab-btn" role="tab" data-depth="1" data-idx="c">
-                                    <span>inner3</span>
-                                </button>
-                                <button type="button" class="tab-btn" role="tab" data-depth="1" data-idx="d">
-                                    <span>inner4</span>
-                                </button>
-                            </div>
-                            
-                            <div class="tabPanel">
-                                <section class="tabItems" role="tabpanel" data-depth="1" data-idx="a">
-                                    <p>inner1 영역입니다.</p>
-                                </section>
-                                <section class="tabItems on" role="tabpanel" data-depth="1" data-idx="b">
-                                    <p>inner2 영역입니다.</p>
-                                </section>
-                                <section class="tabItems" role="tabpanel" data-depth="1" data-idx="c">
-                                    <p>inner3 영역입니다.</p>
-                                </section>
-                                <section class="tabItems" role="tabpanel" data-depth="1" data-idx="d">
-                                    <p>inner4 영역입니다.</p>
-                                </section>
-                            </div>
-                        </div>
-                    </section>
-                    
-                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab4">
-                        <h3 class="hide">증명서발급</h3>
-                        <p>증명서발급 탭 영역입니다.</p>
-                    </section>
-                </div>
-            </div>
+	<div id="wrap">
+			<section class="container">
+				<h1>탭 가이드</h1>
+				<h2>1. 탭 중첩</h2>
 
-            <h2>2. 기본 탭</h2>
-            <div class="tabWrap tab_area" data-tab="tab">
-                <div class="tabDepth" role="tablist">
-                    <button type="button" class="tab-btn" role="tab" data-depth="0" data-idx="tab1_1">
-                        <span>계약조회</span>
-                    </button>
-                    <button type="button" class="tab-btn" role="tab" data-depth="0" data-idx="tab2_1">
-                        <span>계약변경</span>
-                    </button>
-                    <button type="button" class="tab-btn on" role="tab" data-depth="0" data-idx="tab3_1">
-                        <span>납입/해지/환급</span>
-                    </button>
-                    <button type="button" class="tab-btn" role="tab" data-depth="0" data-idx="tab4_1">
-                        <span>증명서발급</span>
-                    </button>
-                </div>
-                
-                <div class="tabPanel">
-                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab1_1">
-                        <h3 class="hide">계약조회</h3>
-                        <p>계약조회 탭 영역입니다.</p>
-                    </section>
-                    
-                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab2_1">
-                        <h3 class="hide">계약변경</h3>
-                        <p>계약변경 탭 영역입니다.</p>
-                    </section>
-                    
-                    <section class="tabItems on" role="tabpanel" data-depth="0" data-idx="tab3_1">
-                        <h3 class="hide">납입/해지/환급</h3>
-                        <p>납입/해지/환급 탭 영역입니다.</p>
-                    </section>
-                    
-                    <section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab4_1">
-                        <h3 class="hide">증명서발급</h3>
-                        <p>증명서발급 탭 영역입니다.</p>
-                    </section>
-                </div>
-            </div>
-        </section>
-    </div>
+					<div class="tabWrap tab_area" data-tab="tab">
+							<div class="tabDepth" role="tablist">
+									<button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab1">
+											<span>계약조회</span>
+									</button>
+									<button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab2">
+											<span>계약변경</span>
+									</button>
+									<button type="button" class="tab-btn on" role="tablist" data-depth="0" data-idx="tab3">
+											<span>납입/해지/환급</span>
+									</button>
+									<button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab4">
+											<span>증명서발급</span>
+									</button>
+							</div>
+							
+							<div class="tabPanel">
+									<section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab1">
+											<h3 class="sr-hidden">계약조회</h3>
+											<p>계약조회 탭 영역입니다.</p>
+									</section>
+									
+									<section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab2">
+											<h3 class="sr-hidden">계약변경</h3>
+											<p>계약변경 탭 영역입니다.</p>
+									</section>
+									
+									<section class="tabItems on" role="tabpanel" data-depth="0" data-idx="tab3">
+											<h3 class="sr-hidden">납입/해지/환급</h3>
+											<div class="inner_tab tab_area" data-tab="tab">
+													<div class="inner_depth" role="tablist" data-tab-id="tabStyle1_1">
+															<button type="button" class="tab-btn" role="tablist" data-depth="1" data-idx="a">
+																	<span>inner1</span>
+															</button>
+															<button type="button" class="tab-btn on" role="tablist" data-depth="1" data-idx="b">
+																	<span>inner2</span>
+															</button>
+															<button type="button" class="tab-btn" role="tablist" data-depth="1" data-idx="c">
+																	<span>inner3</span>
+															</button>
+															<button type="button" class="tab-btn" role="tablist" data-depth="1" data-idx="d">
+																	<span>inner4</span>
+															</button>
+													</div>
+													
+													<div class="tabPanel">
+															<section class="tabItems" role="tabpanel" data-depth="1" data-idx="a">
+																	<p>inner1 영역입니다.</p>
+															</section>
+															<section class="tabItems on" role="tabpanel" data-depth="1" data-idx="b">
+																	<p>inner2 영역입니다.</p>
+															</section>
+															<section class="tabItems" role="tabpanel" data-depth="1" data-idx="c">
+																	<p>inner3 영역입니다.</p>
+															</section>
+															<section class="tabItems" role="tabpanel" data-depth="1" data-idx="d">
+																	<p>inner4 영역입니다.</p>
+															</section>
+													</div>
+											</div>
+									</section>
+									
+									<section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab4">
+											<h3 class="sr-hidden">증명서발급</h3>
+											<p>증명서발급 탭 영역입니다.</p>
+									</section>
+							</div>
+					</div>
 
-    <script>
-        window.addEventListener('DOMContentLoaded', function() {
-            fn.tab();
+          <h2>2. 기본 탭</h2>
+					<div class="tabWrap tab_area" data-tab="tab">
+						<div class="tabDepth" role="tablist">
+								<button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab1">
+										<span>계약조회</span>
+								</button>
+								<button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab2">
+										<span>계약변경</span>
+								</button>
+								<button type="button" class="tab-btn on" role="tablist" data-depth="0" data-idx="tab3">
+										<span>납입/해지/환급</span>
+								</button>
+								<button type="button" class="tab-btn" role="tablist" data-depth="0" data-idx="tab4">
+										<span>증명서발급</span>
+								</button>
+						</div>
+						
+						<div class="tabPanel">
+								<section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab1">
+										<h3 class="sr-hidden">계약조회</h3>
+										<p>계약조회 탭 영역입니다.</p>
+								</section>
+								
+								<section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab2">
+										<h3 class="sr-hidden">계약변경</h3>
+										<p>계약변경 탭 영역입니다.</p>
+								</section>
+								
+								<section class="tabItems on" role="tabpanel" data-depth="0" data-idx="tab3">
+										<h3 class="sr-hidden">납입/해지/환급</h3>
+										<p>납입/해지/환급 탭 영역입니다.</p>
+								</section>
+								
+								<section class="tabItems" role="tabpanel" data-depth="0" data-idx="tab4">
+										<h3 class="sr-hidden">증명서발급</h3>
+										<p>증명서발급 탭 영역입니다.</p>
+								</section>
+						</div>
+				</div>
+			</section>
+	</div>
+
+	<script>
+	class TabManager {
+    constructor() {
+        this.tabAreas = [];
+        this.isInitialized = false;
+    }
+
+    // 탭 매니저 시작
+    init() {
+        if (this.isInitialized) {
+            return;
+        }
+
+        const tabAreas = document.querySelectorAll('[data-tab="tab"]');
+        if (tabAreas.length === 0) {
+            return;
+        }
+
+        // 각 탭 영역 초기화
+        tabAreas.forEach(tabArea => {
+            this.setupTabArea(tabArea);
         });
 
-        const TabManager = {
-            init() {
-                const tabAreas = document.querySelectorAll('[data-tab="tab"]');
-                this.setupEventDelegation(tabAreas);
-            },
+        this.isInitialized = true;
+    }
 
-            findParent(element, className) {
-                if (element.parentNode?.classList?.contains(className)) {
-                    return element.parentNode;
-                }
-                return element.parentNode ? this.findParent(element.parentNode, className) : null;
-            },
+    // 개별 탭 영역 설정
+    setupTabArea(tabArea) {
+        const tabButtons = tabArea.querySelectorAll('.tab-btn');
+        const tabPanels = tabArea.querySelectorAll('.tabItems');
 
-            setTabAttributes(tabButton, isActive) {
-                tabButton.setAttribute('aria-selected', isActive.toString());
-                tabButton.setAttribute('tabindex', isActive ? '0' : '-1');
-                if (isActive) {
-                    tabButton.classList.add('on');
-                } else {
-                    tabButton.classList.remove('on');
-                }
-            },
+        if (tabButtons.length === 0) {
+            return;
+        }
 
-            setPanelAttributes(panel, isActive) {
-                panel.setAttribute('aria-hidden', (!isActive).toString());
-                if (isActive) {
-                    panel.classList.add('on');
-                } else {
-                    panel.classList.remove('on');
-                }
-            },
+        // 초기 상태 설정
+        this.setInitialStates(tabButtons, tabPanels);
 
-            initializeTabStates(tabArea) {
-                const tabButtons = tabArea.querySelectorAll('.tab-btn');
-                const tabPanels = tabArea.querySelectorAll('.tabItems');
+        // 이벤트 리스너 설정
+        this.addEventListeners(tabArea);
 
-                // 초기 상태 설정
-                tabButtons.forEach(button => {
-                    const isActive = button.classList.contains('on');
-                    this.setTabAttributes(button, isActive);
-                });
+        // 탭 영역 정보 저장
+        this.tabAreas.push({
+            element: tabArea,
+            buttons: tabButtons,
+            panels: tabPanels
+        });
+    }
 
-                tabPanels.forEach(panel => {
-                    const isActive = panel.classList.contains('on');
-                    this.setPanelAttributes(panel, isActive);
-                });
-            },
+    // 초기 상태 설정
+    setInitialStates(tabButtons, tabPanels) {
+        tabButtons.forEach(button => {
+            const isActive = button.classList.contains('on');
+            this.setTabAttributes(button, isActive);
+        });
 
-            setupEventDelegation(tabAreas) {
-                tabAreas.forEach(tabArea => {
-                    this.initializeTabStates(tabArea);
+        tabPanels.forEach(panel => {
+            const isActive = panel.classList.contains('on');
+            this.setPanelAttributes(panel, isActive);
+        });
+    }
 
-                    // 이벤트 위임 사용
-                    tabArea.addEventListener('click', (event) => {
-                        const clickedButton = event.target.closest('.tab-btn');
-                        if (!clickedButton) return;
-
-                        event.preventDefault();
-                        this.switchTab(clickedButton, tabArea);
-                    });
-
-                    // 키보드 접근성 추가
-                    tabArea.addEventListener('keydown', (event) => {
-                        const activeButton = event.target.closest('.tab-btn');
-                        if (!activeButton) return;
-
-                        if (event.key === 'Enter' || event.key === ' ') {
-                            event.preventDefault();
-                            this.switchTab(activeButton, tabArea);
-                        }
-                    });
-                });
-            },
-
-            switchTab(clickedButton, tabArea) {
-                const targetIdx = clickedButton.dataset.idx;
-                const targetDepth = clickedButton.dataset.depth;
-
-                // 같은 depth의 모든 버튼과 패널 찾기
-                const sameDepthButtons = tabArea.querySelectorAll(`.tab-btn[data-depth="${targetDepth}"]`);
-                const sameDepthPanels = tabArea.querySelectorAll(`.tabItems[data-depth="${targetDepth}"]`);
-                const targetPanel = tabArea.querySelector(`.tabItems[data-idx="${targetIdx}"][data-depth="${targetDepth}"]`);
-
-                if (!targetPanel) return;
-
-                // 모든 같은 depth의 버튼을 비활성화
-                sameDepthButtons.forEach(button => {
-                    this.setTabAttributes(button, false);
-                });
-
-                // 클릭된 버튼을 활성화
-                this.setTabAttributes(clickedButton, true);
-
-                // 모든 같은 depth의 패널을 숨김
-                sameDepthPanels.forEach(panel => {
-                    this.setPanelAttributes(panel, false);
-                });
-
-                // 대상 패널을 표시
-                this.setPanelAttributes(targetPanel, true);
+    // 이벤트 리스너 추가
+    addEventListeners(tabArea) {
+        // 클릭 이벤트
+        tabArea.addEventListener('click', (event) => {
+            const clickedButton = event.target.closest('.tab-btn');
+            if (clickedButton) {
+                event.preventDefault();
+                this.switchTab(clickedButton, tabArea);
             }
-        };
+        });
 
-        // 사용법을 fn 객체로 유지하여 기존 코드와 호환성 보장
-        const fn = {
-            tab: () => TabManager.init()
-        };
-    </script>
+        // 키보드 이벤트
+        tabArea.addEventListener('keydown', (event) => {
+            const activeButton = event.target.closest('.tab-btn');
+            if (activeButton) {
+                this.handleKeydown(event, activeButton, tabArea);
+            }
+        });
+    }
+
+    // 탭 속성 설정
+    setTabAttributes(tabButton, isActive) {
+        tabButton.setAttribute('aria-selected', isActive.toString());
+        tabButton.setAttribute('tabindex', isActive ? '0' : '-1');
+        
+        if (isActive) {
+            tabButton.classList.add('on');
+        } else {
+            tabButton.classList.remove('on');
+        }
+    }
+
+    // 패널 속성 설정
+    setPanelAttributes(panel, isActive) {
+        panel.setAttribute('aria-hidden', (!isActive).toString());
+        
+        if (isActive) {
+            panel.classList.add('on');
+        } else {
+            panel.classList.remove('on');
+        }
+    }
+
+    // 탭 전환
+    switchTab(clickedButton, tabArea) {
+        const targetIdx = clickedButton.dataset.idx;
+        const targetDepth = clickedButton.dataset.depth;
+
+        if (!targetIdx || !targetDepth) {
+            return;
+        }
+
+        // 같은 depth의 모든 버튼과 패널 찾기
+        const sameDepthButtons = tabArea.querySelectorAll(`.tab-btn[data-depth="${targetDepth}"]`);
+        const sameDepthPanels = tabArea.querySelectorAll(`.tabItems[data-depth="${targetDepth}"]`);
+        const targetPanel = tabArea.querySelector(`.tabItems[data-idx="${targetIdx}"][data-depth="${targetDepth}"]`);
+
+        if (!targetPanel) {
+            return;
+        }
+
+        // 모든 같은 depth의 버튼을 비활성화
+        sameDepthButtons.forEach(button => {
+            this.setTabAttributes(button, false);
+        });
+
+        // 클릭된 버튼을 활성화
+        this.setTabAttributes(clickedButton, true);
+
+        // 모든 같은 depth의 패널을 숨김
+        sameDepthPanels.forEach(panel => {
+            this.setPanelAttributes(panel, false);
+        });
+
+        // 대상 패널을 표시
+        this.setPanelAttributes(targetPanel, true);
+    }
+
+    // 키보드 이벤트 처리
+    handleKeydown(event, activeButton, tabArea) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.switchTab(activeButton, tabArea);
+        }
+    }
+}
+
+// 전역 탭 매니저 인스턴스
+const tabManager = new TabManager();
+tabManager.init();
+
+// 전역에서 접근 가능하도록 설정
+window.tabManager = tabManager;
+	</script>
 </body>
 </html>
